@@ -21,6 +21,6 @@ export class Country extends BaseEntity {
 	emoji?: string;
 
 	@Field()
-	@Column({ nullable: true }) // Changer cette ligne pour permettre les valeurs NULL
+	@Column({ nullable: true })
 	continentCode?: string;
 }

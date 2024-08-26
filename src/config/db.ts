@@ -7,7 +7,6 @@ AppDataSource.initialize()
 
 		const countryRepository = AppDataSource.getRepository(Country);
 
-		// Données des pays avec code de continent
 		const countries = [
 			{ code: "FR", name: "France", emoji: "🇫🇷", continentCode: "EU" },
 			{ code: "BE", name: "Belgique", emoji: "🇧🇪", continentCode: "EU" },
@@ -32,12 +31,10 @@ AppDataSource.initialize()
 		];
 
 		for (const data of countries) {
-			// Vérifier si le pays existe déjà
 			const existingCountry = await countryRepository.findOneBy({
 				code: data.code,
 			});
 			if (!existingCountry) {
-				// Si le pays n'existe pas, le créer et l'ajouter
 				const country = countryRepository.create(data);
 				await countryRepository.save(country);
 				console.log(`Country ${data.code} has been added`);
